@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 const videoSchema = new mongoose.Schema({
   title: String,
   thumbnailUrl: String,
@@ -5,9 +7,12 @@ const videoSchema = new mongoose.Schema({
   channelName: String,
   views: Number,
   category: String,
-
-  // ✅ LIKE / DISLIKE FIELDS
   likes: { type: Number, default: 0 },
   dislikes: { type: Number, default: 0 }
 });
+
+const Video = mongoose.model("Video", videoSchema);
+
+export default Video;   // ✅ THIS WAS MISSING
+
 
